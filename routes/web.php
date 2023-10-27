@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ManagementUserController;
+use App\Http\Controllers\CobaController;
 
 
 /*
@@ -29,12 +30,15 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::group(['namespace' => 'App\Http\Controllers\Backend'], function()
+Route::group(['middleware' => 'auth', 'namespace' => 'App\Http\Controllers\Backend'], function()
 {
     Route::resource('dashboard', DashboardController::class);
     Route::resource('pengalaman_kerja', PengalamanKerjaController::class);
     Route::resource('pendidikan', PendidikanController::class);
+    Route::resource('profiler', ProfilController::class);
 });
+
+Route::get('/cobaerror/{nama?}', [CobaController::class, 'index']);
 
 
 // Route::get('admin/profile', function () {

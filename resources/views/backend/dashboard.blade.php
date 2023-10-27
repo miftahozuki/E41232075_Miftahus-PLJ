@@ -211,8 +211,16 @@
                             <img src="{{ asset('/') }}assets/dist/compiled/jpg/1.jpg" alt="Face 1">
                         </div>
                         <div class="ms-3 name">
-                            <h5 class="font-bold">Miftahus</h5>
-                            <h6 class="text-muted mb-0">@miftahzk</h6>
+                            <h5 class="font-bold">{{ Auth::user()->name }}</h5>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                            <i class="iconly-boldLogout"></i>
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
                         </div>
                     </div>
                 </div>

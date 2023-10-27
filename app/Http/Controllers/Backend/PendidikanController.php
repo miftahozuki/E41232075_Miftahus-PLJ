@@ -19,6 +19,17 @@ class PendidikanController extends Controller
     }
 
     public function store(Request $request) {
+        $validated = $request->validate([
+            'nama' => 'required',
+            'tingkatan' => 'required|in:1,2,3,4,5,6,7,8',
+            'tahun_masuk' => 'required|numeric',
+            'tahun_keluar' => 'required|numeric|gte:tahun_masuk',
+        ],[
+            'nama.required' => 'Nama tidak boleh kosong!',
+            'tahun_masuk.required' => 'Tahun masuk harus diisi!',
+            'tahun_keluar.required' => 'Tahun keluar tidak boleh kosong!',
+            'tahun_keluar.gte' => 'Tahun keluar harus lebih besar dari tahun masuk!'
+        ]);
         Pendidikan::create($request->all());
         return redirect()-> route('pendidikan.index')
                         ->with('success', 'Data Pendidikan baru telah berhasil disimpan.');

@@ -37,8 +37,13 @@
                                         <div class="form-group has-icon-left">
                                             <label for="first-name-icon">Nama Perusahaan</label>
                                             <div class="position-relative">
-                                                <input type="text" class="form-control"
-                                                    placeholder="Nama Perusahaan" id="nama" name="nama" value="{{ isset($pengalaman_kerja) ? $pengalaman_kerja->nama : '' }}" required>
+                                                <input type="text" class="form-control {{ $errors->has('nama') ? 'is-invalid' : '' }}"
+                                                    placeholder="Nama Perusahaan" id="nama" name="nama" value="{{ isset($pengalaman_kerja) ? $pengalaman_kerja->nama : '' }}" >
+                                                @if ($errors->has('nama'))
+                                                    <span class="text-danger small">
+                                                        <p>{{ $errors->first('nama') }}</p>
+                                                    </span>
+                                                @endif
                                                 <div class="form-control-icon">
                                                     <i class="bi bi-person"></i>
                                                 </div>
@@ -50,8 +55,13 @@
                                         <div class="form-group has-icon-left">
                                             <label for="email-id-icon">Jabatan</label>
                                             <div class="position-relative">
-                                                <input type="text" class="form-control" placeholder="Jabatan"
-                                                id="jabatan" name="jabatan" value="{{ isset($pengalaman_kerja) ? $pengalaman_kerja->jabatan : '' }}" required>
+                                                <input type="text" class="form-control {{ $errors->has('jabatan') ? 'is-invalid' : '' }}" placeholder="Jabatan"
+                                                id="jabatan" name="jabatan" value="{{ isset($pengalaman_kerja) ? $pengalaman_kerja->jabatan : '' }}" >
+                                                @if ($errors->has('jabatan'))
+                                                        <span class="text-danger small">
+                                                            <p>{{ $errors->first('jabatan') }}</p>
+                                                        </span>
+                                                @endif
                                                 <div class="form-control-icon">
                                                     <i class="bi bi-envelope"></i>
                                                 </div>
@@ -62,8 +72,13 @@
                                         <div class="form-group has-icon-left">
                                             <label for="mobile-id-icon">Tahun Masuk</label>
                                             <div class="position-relative">
-                                                <input type="text" class="form-control" placeholder="Pilih Tahun..."
-                                                id="tahun_masuk" name="tahun_masuk" value="{{ isset($pengalaman_kerja) ? $pengalaman_kerja->tahun_masuk : '' }}" required>
+                                                <input type="number" class="form-control {{ $errors->has('tahun_masuk') ? 'is-invalid' : '' }}" placeholder="Pilih Tahun..."
+                                                id="tahun_masuk" name="tahun_masuk" value="{{ isset($pengalaman_kerja) ? $pengalaman_kerja->tahun_masuk : '' }}" >
+                                                @if ($errors->has('tahun_masuk'))
+                                                        <span class="text-danger small">
+                                                            <p>{{ $errors->first('tahun_masuk') }}</p>
+                                                        </span>
+                                                @endif
                                                 <div class="form-control-icon">
                                                     <i class="bi bi-phone"></i>
                                                 </div>
@@ -74,8 +89,13 @@
                                         <div class="form-group has-icon-left">
                                             <label for="password-id-icon">Tahun Selesai</label>
                                             <div class="position-relative">
-                                                <input type="text" class="form-control" placeholder="Pilih Tahun..."
-                                                id="tahun_keluar" name="tahun_keluar" value="{{ isset($pengalaman_kerja) ? $pengalaman_kerja->tahun_keluar : '' }}" required>
+                                                <input type="number" class="form-control {{ $errors->has('tahun_keluar') ? 'is-invalid' : '' }}" placeholder="Pilih Tahun..."
+                                                id="tahun_keluar" name="tahun_keluar" value="{{ isset($pengalaman_kerja) ? $pengalaman_kerja->tahun_keluar : '' }}" >
+                                                @if ($errors->has('tahun_keluar'))
+                                                        <span class="text-danger small">
+                                                            <p>{{ $errors->first('tahun_keluar') }}</p>
+                                                        </span>
+                                                @endif
                                                 <div class="form-control-icon">
                                                     <i class="bi bi-lock"></i>
                                                 </div>

@@ -31,6 +31,19 @@ class PengalamanKerjaController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'nama' => 'required',
+            'jabatan' => 'required',
+            'tahun_masuk' => 'required|numeric',
+            'tahun_keluar' => 'required|numeric|gte:tahun_masuk',
+        ],[
+            'nama.required' => 'Nama tidak boleh kosong!',
+            'jabatan.required' => 'Jabatan tidak boleh kosong!',
+            'tahun_masuk.required' => 'Tahun masuk harus diisi!',
+            'tahun_keluar.required' => 'Tahun keluar tidak boleh kosong!',
+            'tahun_keluar.gte' => 'Tahun keluar harus lebih besar dari tahun masuk!'
+        ]);
+
         DB::table('pengalaman_kerja')->insert([
             'nama' => $request->nama,
             'jabatan' => $request->jabatan,

@@ -10,8 +10,9 @@ class DashboardController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        // $value = $request->session()->get('key');
         return view('backend.dashboard');
     }
 
